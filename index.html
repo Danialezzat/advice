@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080d1b" />
+    <meta
+      name="description"
+      content="Download Nobolite from Google Play or the App Store."
+    />
+    <title>Nobolite | Build trust through community</title>
+    <style>
+      :root {
+        --ink: #080d1b;
+        --muted: #343846;
+        --blue: #1679ff;
+        --screen: #030811;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+      }
+
+      body {
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+          BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: #f9fbff;
+      }
+
+      .landing {
+        min-height: 100vh;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            circle at 74% 50%,
+            rgba(119, 130, 255, 0.24),
+            transparent 32rem
+          ),
+          radial-gradient(
+            circle at 76% 74%,
+            rgba(22, 121, 255, 0.1),
+            transparent 23rem
+          ),
+          linear-gradient(105deg, #fff 0%, #fbfdff 48%, #eef4ff 100%);
+      }
+
+      .hero {
+        width: min(1180px, calc(100% - 40px));
+        min-height: 100vh;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(300px, 0.92fr) minmax(330px, 1.08fr);
+        align-items: center;
+        gap: clamp(32px, 6vw, 88px);
+      }
+
+      .brand {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .mark,
+      .phone-logo {
+        width: max-content;
+        font-weight: 950;
+        line-height: 0.86;
+        letter-spacing: -0.16em;
+        color: transparent;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.98) 5%,
+            rgba(211, 228, 255, 0.96) 35%,
+            rgba(58, 153, 255, 0.96) 78%
+          ),
+          linear-gradient(45deg, #56b4ff, #fff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        filter: drop-shadow(0 20px 24px rgba(22, 121, 255, 0.22));
+      }
+
+      .mark {
+        align-self: center;
+        margin-bottom: 24px;
+        font-size: clamp(128px, 15vw, 190px);
+      }
+
+      h1,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: clamp(64px, 8.3vw, 112px);
+        line-height: 0.9;
+        font-weight: 900;
+        letter-spacing: -0.075em;
+      }
+
+      .tagline {
+        margin-top: 28px;
+        color: var(--muted);
+        font-size: clamp(24px, 2.4vw, 33px);
+        line-height: 1.25;
+        letter-spacing: -0.035em;
+      }
+
+      .store-buttons {
+        display: grid;
+        gap: 30px;
+        width: min(100%, 360px);
+        margin-top: 86px;
+      }
+
+      .store-badge {
+        min-height: 96px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 12px 24px;
+        color: #fff;
+        text-decoration: none;
+        background: #030303;
+        border: 2px solid rgba(255, 255, 255, 0.16);
+        border-radius: 10px;
+        box-shadow: 0 12px 28px rgba(8, 13, 27, 0.18);
+        font-size: 36px;
+        font-weight: 500;
+        letter-spacing: -0.04em;
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .store-badge:hover,
+      .store-badge:focus-visible {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 34px rgba(22, 121, 255, 0.25);
+      }
+
+      .store-badge small {
+        display: block;
+        font-size: 18px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: 0.01em;
+      }
+
+      .play-icon {
+        width: 58px;
+        height: 58px;
+        flex: 0 0 58px;
+        background: conic-gradient(
+          from 225deg,
+          #00d084,
+          #00a6ff,
+          #ffe045,
+          #ff3f5d,
+          #00d084
+        );
+        clip-path: polygon(8% 0, 100% 50%, 8% 100%);
+      }
+
+      .apple-icon {
+        width: 58px;
+        height: 58px;
+        flex: 0 0 58px;
+        position: relative;
+      }
+
+      .apple-icon::before {
+        content: "";
+        position: absolute;
+        inset: 10px 6px 4px;
+        background: #fff;
+        border-radius: 46% 46% 42% 42% / 54% 54% 46% 46%;
+      }
+
+      .apple-icon::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 30px;
+        width: 22px;
+        height: 14px;
+        background: #fff;
+        border-radius: 100% 0 100% 0;
+        transform: rotate(-34deg);
+      }
+
+      .phone-wrap {
+        display: flex;
+        justify-content: center;
+      }
+
+      .phone {
+        width: min(430px, 80vw);
+        aspect-ratio: 0.48;
+        padding: 12px;
+        border-radius: 54px;
+        background: linear-gradient(
+          90deg,
+          #090909,
+          #383838 24%,
+          #050505 52%,
+          #343434 78%,
+          #070707
+        );
+        box-shadow:
+          0 42px 70px rgba(20, 45, 90, 0.2),
+          0 8px 18px rgba(0, 0, 0, 0.18),
+          inset 0 0 0 2px rgba(255, 255, 255, 0.12);
+        position: relative;
+      }
+
+      .phone::before,
+      .phone::after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        background: #111;
+        border-radius: 6px;
+      }
+
+      .phone::before {
+        left: -4px;
+        top: 170px;
+        height: 180px;
+        box-shadow: 0 125px 0 #111;
+      }
+
+      .phone::after {
+        right: -4px;
+        top: 290px;
+        height: 116px;
+      }
+
+      .screen {
+        height: 100%;
+        padding: 32px 34px 22px;
+        color: #fff;
+        overflow: hidden;
+        position: relative;
+        border-radius: 44px;
+        background:
+          radial-gradient(
+            circle at 75% 18%,
+            rgba(26, 112, 255, 0.18),
+            transparent 18rem
+          ),
+          radial-gradient(
+            circle at 22% 60%,
+            rgba(255, 255, 255, 0.06),
+            transparent 16rem
+          ),
+          linear-gradient(180deg, #020914 0%, var(--screen) 64%, #07111e 100%);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+      }
+
+      .status-bar,
+      .phone-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .status-icons {
+        font-size: 14px;
+      }
+
+      .island {
+        width: 118px;
+        height: 33px;
+        border-radius: 22px;
+        background: #000;
+        position: absolute;
+        top: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .phone-actions {
+        justify-content: flex-end;
+        gap: 18px;
+        margin-top: 22px;
+        font-size: 27px;
+      }
+
+      .phone-logo {
+        margin: 0 auto 12px;
+        font-size: 66px;
+      }
+
+      .screen h2 {
+        margin: 0;
+        text-align: center;
+        font-size: 38px;
+        line-height: 1.08;
+        letter-spacing: -0.06em;
+      }
+
+      .screen h2 span,
+      .pulse b,
+      .active {
+        color: var(--blue);
+      }
+
+      .phone-tagline {
+        margin-top: 12px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 18px;
+      }
+
+      .avatar {
+        width: 184px;
+        height: 174px;
+        margin: 18px auto 14px;
+        border-radius: 22px;
+        background:
+          radial-gradient(circle at 52% 24%, #24140d 0 14%, transparent 15%),
+          radial-gradient(circle at 51% 36%, #f0b28c 0 14%, transparent 15%),
+          linear-gradient(140deg, transparent 46%, #111 47% 72%, transparent 73%),
+          linear-gradient(135deg, #e5f0f7 0%, #bfd0d6 45%, #7b8c54 46%, #243819 100%);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+      }
+
+      .screen h3 {
+        margin: 0;
+        text-align: center;
+        font-size: 31px;
+        line-height: 1;
+        letter-spacing: -0.055em;
+      }
+
+      .handle,
+      .quote {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.86);
+      }
+
+      .handle {
+        margin-top: 10px;
+        font-size: 15px;
+      }
+
+      .quote {
+        margin-top: 9px;
+        font-size: 15px;
+        font-style: italic;
+      }
+
+      .stats {
+        margin-top: 22px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        text-align: center;
+      }
+
+      .stats strong,
+      .stats span {
+        display: block;
+      }
+
+      .stats strong {
+        font-size: 24px;
+      }
+
+      .stats span {
+        margin-top: 7px;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
+      .pulse {
+        min-height: 112px;
+        margin-top: 20px;
+        padding: 20px 22px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 18px;
+        background: linear-gradient(
+          135deg,
+          rgba(12, 25, 43, 0.96),
+          rgba(6, 14, 27, 0.96)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 18px 32px rgba(0, 0, 0, 0.22);
+        text-align: center;
+      }
+
+      .pulse strong,
+      .pulse b,
+      .pulse span {
+        display: block;
+      }
+
+      .pulse strong {
+        font-size: 22px;
+      }
+
+      .pulse b {
+        margin-top: 4px;
+        font-size: 38px;
+        line-height: 1;
+      }
+
+      .pulse span {
+        margin-top: 8px;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 14px;
+      }
+
+      .pulse-line {
+        color: var(--blue);
+        font-size: 62px;
+        line-height: 1;
+        text-shadow: 0 0 18px rgba(22, 121, 255, 0.8);
+      }
+
+      .critiques {
+        margin: 17px 6px 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 25px;
+      }
+
+      .critiques span {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 16px;
+      }
+
+      .bottom-nav {
+        min-height: 62px;
+        padding: 0 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 32px;
+        background: rgba(12, 25, 43, 0.9);
+        color: rgba(255, 255, 255, 0.76);
+        font-size: 28px;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+      }
+
+      @media (max-width: 900px) {
+        .landing {
+          overflow: auto;
+        }
+
+        .hero {
+          min-height: auto;
+          padding: 56px 0;
+          grid-template-columns: 1fr;
+          justify-items: center;
+          text-align: center;
+        }
+
+        .brand {
+          align-items: center;
+        }
+
+        .store-buttons {
+          margin-top: 46px;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .hero {
+          width: min(100% - 24px, 420px);
+        }
+
+        .mark {
+          font-size: 112px;
+        }
+
+        h1 {
+          font-size: 58px;
+        }
+
+        .tagline {
+          font-size: 22px;
+        }
+
+        .store-badge {
+          min-height: 78px;
+          gap: 16px;
+          font-size: 29px;
+        }
+
+        .store-badge small {
+          font-size: 15px;
+        }
+
+        .play-icon,
+        .apple-icon {
+          width: 46px;
+          height: 46px;
+          flex-basis: 46px;
+        }
+
+        .phone {
+          width: min(100%, 390px);
+          border-radius: 44px;
+        }
+
+        .screen {
+          padding: 29px 25px 22px;
+          border-radius: 34px;
+        }
+
+        .phone-logo {
+          font-size: 60px;
+        }
+
+        .screen h2 {
+          font-size: 34px;
+        }
+
+        .avatar {
+          width: 170px;
+          height: 160px;
+        }
+
+        .pulse {
+          min-height: 110px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="landing" aria-label="Nobolite app download landing page">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="brand">
+          <div class="mark" aria-hidden="true">N</div>
+          <h1 id="page-title">Nobolite</h1>
+          <p class="tagline">Build trust through community.</p>
+
+          <div class="store-buttons" aria-label="Download links">
+            <a
+              class="store-badge"
+              href="https://play.google.com/store/apps/details?id=com.nobolite.app&pcampaignid=web_share"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Get Nobolite on Google Play"
+            >
+              <span class="play-icon" aria-hidden="true"></span>
+              <span><small>GET IT ON</small>Google Play</span>
+            </a>
+
+            <a
+              class="store-badge"
+              href="https://apps.apple.com/it/app/nobolite/id6763732091?l=en-GB"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download Nobolite on the App Store"
+            >
+              <span class="apple-icon" aria-hidden="true"></span>
+              <span><small>Download on the</small>App Store</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="phone-wrap" aria-hidden="true">
+          <div class="phone">
+            <div class="screen">
+              <div class="status-bar">
+                <span>12:26</span>
+                <span class="status-icons">▮▮▮ ◒ 66</span>
+              </div>
+              <div class="island"></div>
+              <div class="phone-actions"><span>⌯</span><span>•••</span></div>
+
+              <div class="phone-logo">N</div>
+              <h2>Your Profile,<br />Your <span>Impact.</span></h2>
+              <p class="phone-tagline">Build trust through community.</p>
+
+              <div class="avatar"></div>
+              <h3>Marco Rossi</h3>
+              <p class="handle">@marcorossi</p>
+              <p class="quote">“Helping others grow together”</p>
+
+              <div class="stats">
+                <div><strong>87</strong><span>Followers</span></div>
+                <div><strong>24</strong><span>Following</span></div>
+                <div><strong>#31</strong><span>Mondo Rank</span></div>
+              </div>
+
+              <div class="pulse">
+                <div>
+                  <strong>Community Pulse</strong>
+                  <b>342</b>
+                  <span>MONDO RANK #31</span>
+                </div>
+                <div class="pulse-line">⌁</div>
+              </div>
+
+              <div class="critiques"><strong>Critiques</strong><span>2⌄</span></div>
+              <div class="bottom-nav">
+                <span>⌂</span><span>♧</span><span>○</span><span class="active">●</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
